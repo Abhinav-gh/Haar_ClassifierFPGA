@@ -140,8 +140,8 @@ temp5 = temp4 + weighted_intensity3;
         
         if (temp5[15] == feature_threshold[15]) begin
         
-        if(temp[15] == 0)
-        begin
+//        if(temp[15] == 0)
+//        begin
             // Both numbers have the same sign; compare directly
             if (temp5 >= feature_threshold) begin
                 feature_temp_value = left_node;
@@ -150,18 +150,8 @@ temp5 = temp4 + weighted_intensity3;
                 feature_temp_value = right_node;
                 fvalue_valid = 1;
             end
-        end
-        else
-        begin
-            // Both numbers have the same sign; compare directly
-            if (temp5 >= feature_threshold) begin
-                feature_temp_value = right_node;
-                fvalue_valid = 1;
-            end else if(temp5 < feature_threshold) begin
-                feature_temp_value = left_node;
-                fvalue_valid = 1;
-            end
-        end
+//        end
+      
         end else if (temp5[15] == 1) begin
             // temp5 is negative, feature_threshold is positive
             feature_temp_value = right_node;

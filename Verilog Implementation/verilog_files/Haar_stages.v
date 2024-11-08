@@ -218,7 +218,7 @@ always @(posedge clk) begin
 //        $display("Testing");
 			if(address == (no_of_features+address1-1)) begin
 				final_stage_value = stage_sum;
-				stage_sum = 0;
+//				stage_sum = 0;
 //				if(final_stage_value == 0)
 //				begin
 //				stage_decision = 0;
@@ -226,49 +226,35 @@ always @(posedge clk) begin
 ////				
 				if (stage_sum[15] == stage_threshold[15]) begin
 				
-				 if(stage_sum[15] == 0)
-				 begin
+//				 if(stage_sum[15] == 0)
+//				 begin
+				    $display("lol");
 				// If both have the same sign, compare directly
 				    if(reset == 1)
                         begin
-                        $display("lol");
+                     
                         stage_decision = 0;
+                        stage_sum = 0;
                         
                         end
 					else if (stage_sum > stage_threshold) begin
 						stage_decision = 1;
-						 $display(stage_sum);
+						 $display(stage_sum, "lol block");
 					end 
 					else begin
 						stage_decision = 0;
 					end
-				end
-				else
-				begin
+//				end
 				
-				if(reset == 1)
-                        begin
-                        $display("Heyo");
-                        stage_decision = 0;
-                        
-                        end
-					else if (stage_sum > stage_threshold) begin
-						stage_decision = 0;
-					end 
-					else begin
-						stage_decision = 1;
-						 $display(stage_sum);
-					end
-				
-				
-				end
 				end 
 				else if (stage_sum[15] == 0) begin
+				        $display("Joke");
 				       
 				        if(reset == 1)
                         begin
 //                        $display("Heyo");
                         stage_decision = 0;
+                         stage_sum = 0;
                         
                         end
                         
@@ -276,7 +262,7 @@ always @(posedge clk) begin
                         begin
 						// final_stage_value is positive, stage_threshold is negative
 						stage_decision = 1;
-						 $display(stage_sum);
+						 $display(stage_sum, "Joke block");
 						end
 				end 
 				else begin
