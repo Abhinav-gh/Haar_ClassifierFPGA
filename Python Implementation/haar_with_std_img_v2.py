@@ -10,16 +10,6 @@ def integral_img_cal(img_arr):
     return integral_img
 
 
-# Reading the xml file and storing relevant information
-
-
-
-# Function to parse XML and extract weak classifiers and features
-
-
-# Function to parse XML and extract weak classifiers, features, and stage thresholds
-
-
 # Function to parse XML and extract stage thresholds, weak classifiers, and features
 def parse_haar_cascade_xml(xml_file):
     # Load the XML file
@@ -84,7 +74,7 @@ def decision_weak_classifier(img_size, wsize, feature, wclassifier, integral_img
     feature_value = 0
     weighted_intensity_sum = 0
     
-    # Loop over all rectangles in the feature (there can be more than two)
+    # Loop over all rectangles in the feature (there can be at max 3)
     for rect in feature:
         tl = np.array([int(su[0] + rect[1]), int(su[1] + rect[0])])
         bl = np.array([int(tl[0] + rect[3]-1), int(tl[1])])
@@ -295,39 +285,4 @@ draw_bounding_boxes_with_plt(original_img_rgb, face_bounding_boxes)
 
 
 
-# import matplotlib.pyplot as plt
-# import matplotlib.patches as patches
 
-# def draw_bounding_boxes_with_plt(image, boxes):
-#     fig, ax = plt.subplots(1)
-#     ax.imshow(image)
-
-#     for box in boxes:
-#         # Resize the bounding box coordinates
-#         top_left = (box[0][1] * scale_x, box[0][0] * scale_y)  # (y, x) -> (height, width)
-#         bottom_right = (box[3][1] * scale_x, box[2][0] * scale_y)  # (y2, x2) -> (height, width)
-
-#         # Create a rectangle patch
-#         rect = patches.Rectangle(top_left, 
-#                                  bottom_right[0] - top_left[0], 
-#                                  bottom_right[1] - top_left[1],
-#                                  linewidth=2, edgecolor='green', facecolor='none')
-#         ax.add_patch(rect)
-
-#     plt.axis('off')  # Hide axes
-#     plt.title('Detected Faces')
-#     plt.show()  # Display the image with bounding boxes
-# # Convert original image to RGB format if it is in BGR format (common in OpenCV)
-# original_img = cv2.imread('image_5.jpeg')
-# # find the dimensions of this original_img
-# print(original_img.shape)
-# # Now we need to resize the bounding boxes to the original image size
-# original_img_height, original_img_width = (original_img.shape[0], original_img.shape[1])
-
-# # Calculate the scaling factors
-# scale_x = original_img_width / wsize
-# scale_y = original_img_height / wsize
-# # original_img_rgb = cv2.cvtColor(original_img, cv2.COLOR_BGR2RGB)
-
-# # Draw bounding boxes on the original image using matplotlib
-# draw_bounding_boxes_with_plt(original_img, face_bounding_boxes)
